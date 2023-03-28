@@ -19,12 +19,58 @@ h6{
   font-family: sans-serif;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+
+.spin{
+  color: red;
+  animation-name: spin;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes  spin{
+  0%{
+  color: red;
   }
-  body {
-    color: white;
-    background: black;
+  30%{
+    background-color: black;
+    border-radius: 6px;
+  }
+  50%{
+    color: purple;
+  }
+  70%{
+    color: gold;
+  }
+  90%{
+    color:orangered;
+  }
+  100%{
+    color: red;
+  }
+}
+
+/* section h1{
+  position: relative;
+  perspective: 800px;
+  display: inline-block;
+}
+.spin{
+  color: red;
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation-name: spin;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin{
+  0%{
+    transform: rotateY(0deg);
+  }
+  100%{
+    transform: rotateY(360deg);
   }
 } */
+
+/* OR */
+/* initially wanted it to spin 360 in 3d, but changed my mind later */
