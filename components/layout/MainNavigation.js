@@ -8,26 +8,26 @@ const MainNavigation = () => {
 
   return (
     <header className={classes.header}>
-      <h1>Next Meetups</h1>
+      <h1><Link href={"/"}> Next Moviez </Link></h1>
       <nav>
         <ul>
           <li>
             <Link
-              href={"/"}
-              className={router.pathname === "/" ? classes.active : ""}>
+              href={"/all-moviez"}
+              className={router.pathname === "/all-moviez" ? classes.active : ""}>
               {" "}
-              All Meetups{" "}
+              All Moviez{" "}
             </Link>
           </li>
           <li>
             {" "}
             <Link
-              href={"/add-meetups"}
+              href={"/add-moviez"}
               className={
-                router.pathname === "/add-meetups" ? classes.active : ""
+                router.pathname === "/add-moviez" ? classes.active : ""
               }>
               {" "}
-              Add New Meetups{" "}
+              Add New Moviez{" "}
             </Link>
           </li>
           <li>
