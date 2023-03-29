@@ -39,8 +39,8 @@ const AddMoviezForm = (props) => {
         year: enteredYear,
         description: enteredDescription
       };
-      console.log(movieData);
-      //props.addMoviezHandler()
+      //console.log(movieData);
+      props.onAddMoviez(movieData)
     
   };
  
