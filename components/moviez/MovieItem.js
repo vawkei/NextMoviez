@@ -1,8 +1,14 @@
 import classes from './MovieItem.module.css';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import {useRouter} from 'next/router';
 
 const MovieItem = (props) => {
+
+    const router = useRouter();
+    const onShowDetail =()=>{
+        router.push(`/moviez/${props.id}`)
+    }
     return ( 
         <Card>
             <li key={props.id}>
@@ -15,7 +21,7 @@ const MovieItem = (props) => {
                     <p>{props.year}</p>
                 </div>
                 <div className={classes.button}>
-                    <Button>Show Detail</Button>
+                    <Button onClick={onShowDetail}>Show Detail</Button>
                 </div>
             </li>
         </Card>
