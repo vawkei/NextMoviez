@@ -1,10 +1,16 @@
 import classes from "./MainNavigation.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import {useSelector} from 'react-redux';
 
 const MainNavigation = () => {
   const router = useRouter();
-  //console.log(router.pathname);
+  // console.log(router.pathname);//this shows whats immediately after the domain/. example: http://localhost:3000/all-moviez
+  
+   //console.log(router.query.moviezId);//this shows undefined in the console here.
+
+   const totalFaves = useSelector((state)=>{
+    return state.favorite.totalFaves});
 
   return (
     <header className={classes.header}>
@@ -37,7 +43,7 @@ const MainNavigation = () => {
                 router.pathname === "/favorites" ? classes.active : ""
               }>
               {" "}
-              Favorites <span className={classes.badge}>0</span>{" "}
+              Favorites <span className={classes.badge}>{totalFaves}</span>{" "}
             </Link>
           </li>
         </ul>

@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import classes from "./MoviezDetail.module.css";
+import {useDispatch} from "react-redux"
 
 const DUMMY_MOVIEZ = [
   {
@@ -44,20 +45,26 @@ const DUMMY_MOVIEZ = [
   },
 ];
 
+
 const MovieDetail = () => {
   const router = useRouter();
+  // console.log(router.query.moviezId);this shows whats after the domainname/folder/id http://localhost:3000/moviez/m1
 
   const getMovieById = (id) => {
     return DUMMY_MOVIEZ.find((movie) => movie.id === id);
   };
-
-  console.log(router.query.moviezId);
 
   const movieId = router.query.moviezId;
   const movie = getMovieById(movieId);
 
   if (!movie) {
     return <p style={{ marginTop: "6rem" }}>No Movie Found</p>;
+  };
+
+  const dispatch = useDispatch();
+
+  const addItemToFavoritesHandler = ()=>{
+    dispatch()
   }
 
   return (
