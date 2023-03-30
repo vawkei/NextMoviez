@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import classes from "./MoviezDetail.module.css";
 
@@ -74,6 +75,9 @@ const MovieDetail = () => {
             <div className={classes.description}>
               <h4>Movie Description</h4>
               <p>{movie.description}</p>
+            </div>
+            <div className={classes.action}>
+              <Button>Add to Favorite</Button>
             </div>
           </div>
         </li>
