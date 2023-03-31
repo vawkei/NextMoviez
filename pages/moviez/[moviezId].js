@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import classes from "./MoviezDetail.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { faveSliceAction } from "../../store";
 
 const DUMMY_MOVIEZ = [
@@ -63,17 +63,19 @@ const MovieDetail = () => {
 
   const dispatch = useDispatch();
 
-  const addItemToFavoritesHandler = () => {
-    dispatch(
-      faveSliceAction.addItemToFavorites({
-        id: movie.id,
-        image: movie.image,
-        genre: movie.genre,
-        year: movie.year,
-        description: movie.description,
-      })
-    );
+  const toggleFavoritesHandler =()=>{
+    dispatch(faveSliceAction.toggleFavorites({
+      id: movie.id,
+      image: movie.image,
+      genre: movie.genre,
+      year: movie.year,
+      description: movie.description,
+    }))
   };
+
+  const totalFaves = useSelector((state)=> state.favorite.totalFaves);
+
+  
 
   return (
     <div>
@@ -92,8 +94,8 @@ const MovieDetail = () => {
               <p>{movie.description}</p>
             </div>
             <div className={classes.action}>
-              <Button onClick={addItemToFavoritesHandler}>
-                Add to Favorite
+              <Button onClick={toggleFavoritesHandler}>
+                {totalFaves > 0?"Remove From Favorite":"Add to Favorites"}
               </Button>
             </div>
           </div>
