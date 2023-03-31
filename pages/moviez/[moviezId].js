@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import classes from "./MoviezDetail.module.css";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { faveSliceAction } from "../../store";
 
 const DUMMY_MOVIEZ = [
@@ -63,19 +63,24 @@ const MovieDetail = () => {
 
   const dispatch = useDispatch();
 
-  const toggleFavoritesHandler =()=>{
-    dispatch(faveSliceAction.toggleFavorites({
-      id: movie.id,
-      image: movie.image,
-      genre: movie.genre,
-      year: movie.year,
-      description: movie.description,
-    }))
+  const toggleFavoritesHandler = () => {
+    dispatch(
+      faveSliceAction.toggleFavorites({
+        id: movie.id,
+        image: movie.image,
+        genre: movie.genre,
+        year: movie.year,
+        description: movie.description,
+      })
+    );
   };
 
-  const totalFaves = useSelector((state)=> state.favorite.totalFaves);
-
-  
+  //const totalFaves = useSelector((state)=> state.favorite.totalFaves);
+  const items = useSelector((state)=>state.favorite.items);
+  let hasId = (id)=>{
+    return items.some((prevState)=>prevState.id ===id)
+  };
+  let hasIdHandler = hasId(movie.id);
 
   return (
     <div>
@@ -95,7 +100,7 @@ const MovieDetail = () => {
             </div>
             <div className={classes.action}>
               <Button onClick={toggleFavoritesHandler}>
-                {totalFaves > 0?"Remove From Favorite":"Add to Favorites"}
+                {hasIdHandler ?"Remove from Favorites":"Add to Favorites"}
               </Button>
             </div>
           </div>
