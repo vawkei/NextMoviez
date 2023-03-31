@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import Button from "../../components/ui/Button";
 import Card from "../../components/ui/Card";
 import classes from "./MoviezDetail.module.css";
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux";
+import { faveSliceAction } from "../../store";
 
 const DUMMY_MOVIEZ = [
   {
@@ -45,7 +46,6 @@ const DUMMY_MOVIEZ = [
   },
 ];
 
-
 const MovieDetail = () => {
   const router = useRouter();
   // console.log(router.query.moviezId);this shows whats after the domainname/folder/id http://localhost:3000/moviez/m1
@@ -59,13 +59,21 @@ const MovieDetail = () => {
 
   if (!movie) {
     return <p style={{ marginTop: "6rem" }}>No Movie Found</p>;
-  };
+  }
 
   const dispatch = useDispatch();
 
-  const addItemToFavoritesHandler = ()=>{
-    dispatch()
-  }
+  const addItemToFavoritesHandler = () => {
+    dispatch(
+      faveSliceAction.addItemToFavorites({
+        id: movie.id,
+        image: movie.image,
+        genre: movie.genre,
+        year: movie.year,
+        description: movie.description,
+      })
+    );
+  };
 
   return (
     <div>
@@ -84,7 +92,9 @@ const MovieDetail = () => {
               <p>{movie.description}</p>
             </div>
             <div className={classes.action}>
-              <Button>Add to Favorite</Button>
+              <Button onClick={addItemToFavoritesHandler}>
+                Add to Favorite
+              </Button>
             </div>
           </div>
         </li>

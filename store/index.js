@@ -12,7 +12,7 @@ const faveSlice = createSlice({
     addItemToFavorites(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
-      state.totalFaves = state.totalFaves + 1;
+      // state.totalFaves = state.totalFaves + 1;
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
@@ -21,13 +21,17 @@ const faveSlice = createSlice({
           year:newItem.year,
           description: newItem.description  
         });
+        state.totalFaves = state.totalFaves + 1;
       }
     },
     removeFromFavorites(state,action){
        const id = action.payload;
-       const existingItem = state.items.find((item)=>item.id==id);
+       console.log(id)
+       const existingItem = state.items.find((item)=>item.id === id);
+       console.log(existingItem)
        if(existingItem){
-        state.items.filter((item)=>item.id !=id)
+       state.items= state.items.filter((item)=>item.id !==id)
+        state.totalFaves = state.totalFaves - 1
        } ;
     }
   },
