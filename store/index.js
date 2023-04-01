@@ -23,9 +23,9 @@ const faveSlice = createSlice({
         state.totalFaves = state.totalFaves + 1;
       } else {
         const existingMovie = action.payload;
-        console.log(existingMovie.id);
+        //console.log(existingMovie.id);
         existingItem = state.items.find((item) => item.id === existingMovie.id);
-        console.log(existingItem);
+        //console.log(existingItem);
         state.items = state.items.filter(
           (item) => item.id !== existingMovie.id
         );

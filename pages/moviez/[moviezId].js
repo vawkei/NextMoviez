@@ -75,7 +75,7 @@ const MovieDetail = () => {
     );
   };
 
-  //const totalFaves = useSelector((state)=> state.favorite.totalFaves);
+
   const items = useSelector((state)=>state.favorite.items);
   let hasId = (id)=>{
     return items.some((prevState)=>prevState.id ===id)
