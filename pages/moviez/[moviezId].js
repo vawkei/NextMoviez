@@ -58,7 +58,16 @@ const MovieDetail = () => {
   const movie = getMovieById(movieId);
 
   if (!movie) {
-    return <p style={{ marginTop: "6rem" }}>No Movie Found</p>;
+    return  <p
+    style={{
+      textAlign: "center",
+      backgroundColor: "green",
+      padding: "1.5rem",
+      color:'white',
+      borderRadius:'6px'
+    }}>
+    No Movie Found
+  </p>
   }
 
   const dispatch = useDispatch();

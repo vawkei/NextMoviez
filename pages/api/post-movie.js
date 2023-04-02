@@ -8,9 +8,6 @@ const Handler = async (req, res) => {
     const year = req.body.year;
     const description = req.body.description;
 
-    const client = await MongoClient.connect(
-      "mongodb+srv://vawkeicodewebz:rOCzIJz4gHV9to1L@cluster0.9yu1rgh.mongodb.net/?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1"
-    );
 
     if (
       !title ||
@@ -35,6 +32,11 @@ const Handler = async (req, res) => {
       year: year,
       description: description,
     };
+
+    const client = await MongoClient.connect(
+      "mongodb+srv://vawkeicodewebz:rOCzIJz4gHV9to1L@cluster0.9yu1rgh.mongodb.net/?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1"
+    );
+
     const db = client.db("my-next-moviez");
     const document = await db.collection("moviez").insertOne(movies);
     res.status(200).json({message:"Movie Added to Database",data:document})
