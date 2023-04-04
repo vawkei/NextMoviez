@@ -1,6 +1,7 @@
 import {MongoClient} from "mongodb";
 import MovieList from "../components/moviez/MovieList";
-
+import Head from 'next/head';
+import { Fragment } from "react";
 
 
 // const DUMMY_MOVIEZ =[
@@ -67,11 +68,18 @@ export const getStaticProps = async()=>{
 
 const AllMoviez = (props) => {
     return ( 
+        <Fragment>
+        <Head>
+            <title>All Moviez</title>
+            <meta name="description"
+                  content="Browse a Huge List of Moviez from our Database"/>
+        </Head>
         <div>
             <h1>All Moviez Page</h1>
             {/* <MovieList movies={DUMMY_MOVIEZ} /> */}
             <MovieList movies={props.movies} />
         </div>
+        </Fragment>
      );
 }
  
