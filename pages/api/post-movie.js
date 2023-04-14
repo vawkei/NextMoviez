@@ -33,9 +33,7 @@ const Handler = async (req, res) => {
       description: description,
     };
 
-    const client = await MongoClient.connect(
-      "mongodb+srv://vawkeicodewebz:rOCzIJz4gHV9to1L@cluster0.9yu1rgh.mongodb.net/?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1"
-    );
+    const client = await MongoClient.connect(process.env.MONGODB_URL);
 
     const db = client.db("my-next-moviez");
     const document = await db.collection("moviez").insertOne(movies);
