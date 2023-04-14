@@ -73,7 +73,7 @@ export const getStaticPaths = async()=>{
 export const getStaticProps = async (context)=>{
   const movieId = context.params.movieId;
 
-  const client =await MongoClient.connect( "mongodb+srv://vawkeicodewebz:rOCzIJz4gHV9to1L@cluster0.9yu1rgh.mongodb.net/?retryWrites=true&w=majority&authMechanism=SCRAM-SHA-1");
+  const client =await MongoClient.connect(process.env.MONGODB_URL);
 
   const db = client.db('my-next-moviez');
   const document = db.collection("moviez")
